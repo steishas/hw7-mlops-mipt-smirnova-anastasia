@@ -1,0 +1,14 @@
+---
+stages:
+  - build
+cache:
+  paths:
+    - .cache/pip
+build_model:
+  stage: build
+  image: python:3.11-slim
+  before_script:
+    - pip install --cache-dir .cache/pip -r requirements.txt
+  script:
+    - echo "запускаем пайплайн..."
+    - python ml_pipeline.py
