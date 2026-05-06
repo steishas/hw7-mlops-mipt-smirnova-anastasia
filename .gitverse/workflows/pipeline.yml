@@ -1,14 +1,30 @@
 ---
-stages:
-  - build
-cache:
-  paths:
-    - .cache/pip
-build_model:
-  stage: build
-  image: python:3.11-slim
-  before_script:
-    - pip install --cache-dir .cache/pip -r requirements.txt
-  script:
-    - echo "запускаем пайплайн..."
-    - python ml_pipeline.py
+name: Pipeline
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: .cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+
+      - name: Install dependencies
+        run: pip install --cache-dir .cache/pip -r requirements.txt
+
+      - name: Run ML pipeline
+        run: |
+          echo "запускаем пайплайн..."
+          python ml_pipeline.py
