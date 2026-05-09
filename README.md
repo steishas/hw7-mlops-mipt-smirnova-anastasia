@@ -27,9 +27,11 @@
 ## Выполненные задания
 
 ### Задание 1. CI/CD-пайплайн (GitVerse)
-- Создан `.gitverse/workflows/pipeline.yml`
-- При пуше автоматически: установка зависимостей -> обучение модели -> сохранение артефактов
-- [Ссылка на выполненный CI](https://gitverse.ru/steishas/hw7-mipt-deployment/cicd/1)
+- Создан `.gitverse/workflows/pipeline.yml` — пайплайн в GitVerse
+- Пайплайн запускается при пуше: установка зависимостей -> запуск `ml_pipeline.py`
+- Синтаксис адаптирован под GitVerse (отличается от `.gitlab-ci.yml`)
+- Пайплайн выполнен успешно
+- [Ссылка на выполненный пайплайн](https://gitverse.ru/steishas/hw7-mipt-deployment/cicd/1)
 
 ### Задание 2. ADR: выбор стратегии деплоя
 - Рассмотрены: Blue-Green, Canary, Rolling, Shadow
@@ -62,8 +64,8 @@
 - Результат: модель B статистически значимо лучше (p < 0.05)
 
 ### Задание 5. Деплой через GitHub Actions
-- Создан `.github/workflows/deploy.yml`
-- Docker-образ собирается и пушится в GitHub Container Registry
+- Создан `.github/workflows/ci.yml` — CI пайплайн в GitHub Actions
+- Создан `.github/workflows/deploy.yml` — деплой в GitHub Container Registry
 - [Ссылка на выполненный Deploy](https://github.com/steishas/hw7-mlops-mipt-smirnova-anastasia/actions)
 
 ## Запуск
