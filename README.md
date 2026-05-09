@@ -5,13 +5,13 @@
 ## Структура проекта
 ```text
 ├── .github/workflows/
-│ ├── ci.yml # CI пайплайн (задание 1, 5)
-│ └── deploy.yml # Деплой в GitHub Container Registry (задание 5)
+│ ├── ci.yaml # CI пайплайн (задание 1, 5)
+│ └── deploy.yaml # Деплой в GitHub Container Registry (задание 5)
 ├── ml_pipeline.py # Обучение модели RandomForest на Iris
 ├── canary_deployment_pipeline.py # Flask-сервис для Canary деплоя (нормальный)
 ├── canary_deployment_pipeline_bugged.py # Flask-сервис с багом (демонстрация Rollback)
-├── docker-compose.yml # Canary: v1.0.0 + v1.1.0 + Nginx
-├── docker-compose-bugged.yml # Демонстрация автоматического Rollback
+├── docker-compose.yaml # Canary: v1.0.0 + v1.1.0 + Nginx
+├── docker-compose-bugged.yaml # Демонстрация автоматического Rollback
 ├── Dockerfile # Docker-образ ML-сервиса
 ├── Dockerfile.bugged # Docker-образ для багнутой версии
 ├── nginx.conf # Балансировщик 90/10 + автооткат
@@ -27,9 +27,9 @@
 ## Выполненные задания
 
 ### Задание 1. CI/CD-пайплайн (GitVerse)
-- Создан `.gitverse/workflows/pipeline.yml` — пайплайн в GitVerse
+- Создан `.gitverse/workflows/pipeline.yaml` — пайплайн в GitVerse
 - Пайплайн запускается при пуше: установка зависимостей -> запуск `ml_pipeline.py`
-- Синтаксис адаптирован под GitVerse (отличается от `.gitlab-ci.yml`)
+- Синтаксис адаптирован под GitVerse (отличается от `.gitlab-ci.yaml`)
 - Пайплайн выполнен успешно
 - [Ссылка на выполненный пайплайн](https://gitverse.ru/steishas/hw7-mipt-deployment/cicd/1)
 
@@ -64,8 +64,8 @@
 - Результат: модель B статистически значимо лучше (p < 0.05)
 
 ### Задание 5. Деплой через GitHub Actions
-- Создан `.github/workflows/ci.yml` — CI пайплайн в GitHub Actions
-- Создан `.github/workflows/deploy.yml` — деплой в GitHub Container Registry
+- Создан `.github/workflows/ci.yaml` — CI пайплайн в GitHub Actions
+- Создан `.github/workflows/deploy.yaml` — деплой в GitHub Container Registry
 - [Ссылка на выполненный Deploy](https://github.com/steishas/hw7-mlops-mipt-smirnova-anastasia/actions)
 
 ## Запуск
@@ -117,7 +117,7 @@ docker-compose down
 
 #### Запустить с багнутой версией v1.2.0
 ```bash
-docker-compose -f docker-compose-bugged.yml up -d --build
+docker-compose -f docker-compose-bugged.yaml up -d --build
 ```
 
 #### v2 health падает с ошибкой 500
@@ -132,7 +132,7 @@ for i in $(seq 1 10); do curl -s http://localhost/health; echo ""; done
 
 #### Остановить
 ```bash
-docker-compose -f docker-compose-bugged.yml down
+docker-compose -f docker-compose-bugged.yaml down
 ```
 
 # Выводы
