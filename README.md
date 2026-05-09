@@ -27,7 +27,7 @@
 ## Выполненные задания
 
 ### Задание 1. CI/CD-пайплайн (GitVerse)
-- Создан `.github/workflows/ci.yml`
+- Создан `.gitverse/workflows/pipeline.yml`
 - При пуше автоматически: установка зависимостей -> обучение модели -> сохранение артефактов
 - [Ссылка на выполненный CI](https://gitverse.ru/steishas/hw7-mipt-deployment/cicd/1)
 
